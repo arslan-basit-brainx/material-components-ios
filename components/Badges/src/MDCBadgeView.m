@@ -116,7 +116,7 @@ static const CGFloat kMinDiameter = 9;
 }
 
 - (CGSize)sizeThatFitsDotBadge:(CGSize)size {
-  const CGFloat squareDimension = (_dotBadgeInnerRadius + self.layer.borderWidth) * 2;
+  CGFloat squareDimension = (_dotBadgeInnerRadius + self.layer.borderWidth) * 2;
   return CGSizeMake(squareDimension, squareDimension);
 }
 
