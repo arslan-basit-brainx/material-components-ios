@@ -19,6 +19,7 @@
 // TODO(b/151929968): Delete import of MDCBottomNavigationBarDelegate.h when client code has been
 // migrated to no longer import MDCBottomNavigationBarDelegate as a transitive dependency.
 #import "MDCBottomNavigationBarDelegate.h"
+#import "MDCBottomNavigationBarItem.h"
 #import "MaterialElevation.h"
 #import "MDCMinimumOS.h"  // IWYU pragma: keep
 #import "MaterialShadow.h"
@@ -117,13 +118,28 @@ typedef NS_ENUM(NSInteger, MDCBottomNavigationBarAlignment) {
  recommended the array contain at least three items and no more than five items -- appearance may
  degrade outside of this range.
  */
+// TODO(b/378528228): Remove this property once all clients have migrated to using `barItems`.
 @property(nonatomic, copy, nonnull) NSArray<UITabBarItem *> *items;
+
+/**
+ An array of MDCBottomNavigationBarItems that is used to populate bottom navigation bar content. It
+ is strongly recommended the array contain at least three items and no more than five items --
+ appearance may degrade outside of this range.
+ */
+@property(nonatomic, copy, nonnull) NSArray<MDCBottomNavigationBarItem *> *barItems;
 
 /**
  Selected item in the bottom navigation bar.
  Default is no item selected.
  */
+// TODO(b/378528228): Remove this property once all clients have migrated to using `barItems`.
 @property(nonatomic, weak, nullable) UITabBarItem *selectedItem;
+
+/**
+ Selected MDCBottomNavigationBarItem in the bottom navigation bar.
+ Default is no item selected.
+ */
+@property(nonatomic, weak, nullable) MDCBottomNavigationBarItem *selectedBarItem;
 
 /**
  Display font used for item titles.

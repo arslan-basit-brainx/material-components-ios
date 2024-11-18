@@ -948,8 +948,14 @@ UIKIT_EXTERN float UIAnimationDragCoefficient(void);  // UIKit private drag coef
   if (isRTL) {
     badgeX = iconX + floor([self iconSize].width * 0.5) - floor([self badgeSize].width) -
              _badgeHorizontalOffset;
+    if (_badge.appearance.dotBadgeEnabled) {
+      badgeX -= 5;
+    }
   } else {
     badgeX = iconX + floor([self iconSize].width * 0.5) + _badgeHorizontalOffset;
+    if (_badge.appearance.dotBadgeEnabled) {
+      badgeX += 5;
+    }
   }
 
   CGFloat badgeY = CGRectGetMinY(indicatorFrame) + kBadgeVerticalOffset;
@@ -1087,6 +1093,11 @@ UIKIT_EXTERN float UIAnimationDragCoefficient(void);  // UIKit private drag coef
   CGFloat badgeY = badgePosition.y;
   CGSize badgeSize = [self badgeSize];
   CGRect badgeFrame = CGRectIntegral(CGRectMake(badgeX, badgeY, badgeSize.width, badgeSize.height));
+  if (_badge.appearance.dotBadgeEnabled) {
+    CGFloat badgeDiameter =
+        (_badge.appearance.dotBadgeInnerRadius + _badge.appearance.borderWidth) * 2;
+    badgeFrame = CGRectMake(badgeX, badgeY, badgeDiameter, badgeDiameter);
+  }
   _badge.frame = badgeFrame;
 
   CGPoint iconPosition = [self iconPosition];
@@ -1116,6 +1127,11 @@ UIKIT_EXTERN float UIAnimationDragCoefficient(void);  // UIKit private drag coef
   CGFloat badgeY = badgePosition.y;
   CGSize badgeSize = [self badgeSize];
   CGRect badgeFrame = CGRectIntegral(CGRectMake(badgeX, badgeY, badgeSize.width, badgeSize.height));
+  if (_badge.appearance.dotBadgeEnabled) {
+    CGFloat badgeDiameter =
+        (_badge.appearance.dotBadgeInnerRadius + _badge.appearance.borderWidth) * 2;
+    badgeFrame = CGRectMake(badgeX, badgeY, badgeDiameter, badgeDiameter);
+  }
   _badge.frame = badgeFrame;
 
   CGPoint iconPosition = [self iconPosition];
